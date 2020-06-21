@@ -80,7 +80,7 @@ function mortgageCalculator2 (principals, interest, time){
     console.log(name, ", your monthly rate is ", monthlyRate);
 }
 
-mortgageCalculator2(200000, 0,05, 30);
+mortgageCalculator2(200000, 0.05, 30);
 
 
 // 🏡 Task 5: Conditionals
@@ -124,7 +124,7 @@ function mortgageCalculatorCredit (principals, interest, time, credit){
         console.log(name, ", your monthly rate is ", monthlyRate);
     }
 }
-mortgageCalculatorCredit();
+mortgageCalculatorCredit(200000, 0.05, 30, 750);
 
 
 // 🏡 Task 6: Loops
@@ -142,9 +142,30 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+function variableInterestRate (principals, interest, time){
+    principal = principals;
+    interestRate = interest - 0.02;
+    years = time;
+    monthlyInterestRate = interestRate / 12;
+    periods = years * 12;
+    n1 = Math.pow(1+monthlyInterestRate, periods);
+    numerator = principal * n1 * monthlyInterestRate;
+    denominator = n1 - 1;
+    monthlyRate = Math.round(numerator / denominator);
+    console.log(name, ", with an interest rate of ", interestRate, "your monthly rate is ", monthlyRate);
+    for(let i = 0        ;i < 9            ; i++              ){
+        interestRate = Math.round((interestRate + 0.005) * 1000) / 1000;
+        monthlyInterestRate = interestRate / 12;
+        periods = years * 12;
+        n1 = Math.pow(1+monthlyInterestRate, periods);
+        numerator = principal * n1 * monthlyInterestRate;
+        denominator = n1 - 1;
+        monthlyRate = Math.round(numerator / denominator);
+        console.log(name, ", with an interest rate of ", interestRate, "your monthly rate is ", monthlyRate);
+    }
+}
 
-
-
+variableInterestRate(200000, 0.04, 30)
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
